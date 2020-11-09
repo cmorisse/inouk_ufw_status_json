@@ -43,12 +43,12 @@ except:
 
 gettext.install(ufw) 
 
-__version__ = '0.1'
+__version__ = '0.2'
 
 ufw_frontend = ufw.frontend.UFWFrontend(dryrun=False)
 ufw_backend = ufw_frontend.backend
 
-def _is_active():
+def is_ufw_active():
     for direction in ["input", "output", "forward"]:
         (rc, out) = ufw.util.cmd([
             ufw_backend.iptables, 
@@ -88,7 +88,7 @@ if __name__ == '__main__':
     output = {
         "ufw_get_status_json_version": __version__,
         "ufw_version": get_ufw_version(),
-        "ufw_active": _is_active(),
+        "ufw_active": is_ufw_active(),
         "rules": rdl,
         "warnings": warning_messages
     }

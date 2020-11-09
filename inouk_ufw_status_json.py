@@ -40,6 +40,7 @@ try:
 except:
     print("Error: ufw must be available. Aborting")
     sys.exit(126)
+
 gettext.install(ufw) 
 
 __version__ = '0.1'
